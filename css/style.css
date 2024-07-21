@@ -20,7 +20,19 @@
 body{
     background-color: var(--body) ;
     font-family: 'Poppins', sans-serif;
+    overflow: auto;
 }
+
+body::-webkit-scrollbar {
+    width: 12px; 
+    height: 12px; 
+  }
+
+  body::-webkit-scrollbar-track,
+  body::-webkit-scrollbar-thumb {
+    background-color: var(--body) ;
+    border-radius: 10px;
+  }
 
 img{
     max-width: 100%;
@@ -246,50 +258,105 @@ h2{
 }
 
 .portfolio-content{
-    margin-top: 70px;
-}
-
-.portfolio-1{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 100px;
+    justify-content: space-around;
+    padding-top: 20px;
+    flex-wrap: wrap;
+    gap: 2px;
 }
 
-.portfolio-txt{
-    flex-basis: 50%;
-    text-align: left;
+
+/* Estilos generales */
+.portfolio-item {
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.portfolio-txt span{
-    font-size: 18px;
-    font-weight: 600;
-    display: block;
-    color: #49bada;
-    text-transform: uppercase;
+.portfolio-text img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.portfolio-text h3 {
+    font-size: 1.5rem;
     margin-bottom: 10px;
 }
 
-.portfolio h3{
-    color: #ffffff;
-    font-size: 35px;
-    text-transform: capitalize;
-    margin-bottom: 20px;
+
+.portfolio-text p {
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 
-.portfolio-txt p{
-    font-size: 17px;
-    color: #c5c5c5;
-    margin-bottom: 25px;
+.button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.portfolio-img {
-    flex-basis: 50%;
+.portfolio-item {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 23%;
+    height: 300px;
+    min-width:300px;
+    padding: 10px 12px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0,0,0,0.02);
+    margin: 15px 0;
+    transition: 0.2s ease;
+    position: relative;
+    border: 1px solid #cce7d0;
+    border-radius: 25px;
+}
+
+.portfolio-item:hover {
+    box-shadow: 0 0 20px rgba(224, 185, 185, 0.2); 
+}
+
+.portfolio-item .portfolio-text {
+    width: 100%; 
     text-align: center;
+    overflow: hidden;
 }
 
-.portfolio-img  img{
-    width: 400px;
+.portfolio-item img {
+    width: 90%;
+    height: 50%;
+    border-radius: 20px;
+    display: block;
+    margin: 10px auto; /* Centrar la imagen */
+}
+
+.portfolio h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.portfolio-item p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #555; /* Color de texto ajustado */
+    display: none;
+}
+
+.btn-1:hover {
+    background: transparent;
+    scale: 0.9;
+    border: 1px solid white;
 }
 
 
@@ -343,31 +410,41 @@ h2{
 }
 
 
-.link  i{
+.link i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     background: linear-gradient(
         90deg, 
-        rgba(78,159,215,1) 0%,
-        rgba(74,42,193,1) 100%
+        rgba(78, 159, 215, 1) 0%, 
+        rgba(74, 42, 193, 1) 100%
     );
     color: white;
     border-radius: 50%;
-    padding: 8px;
+    width: 40px; 
+    height: 40px; 
     margin: 5px;
-    
+    transition: background 0.3s, border 0.3s, color 0.3s;
 }
 
-
-
-.link i:hover{
-    background: #000;
-    color: #49bada;
+.link i:hover {
+    background: none;
+    border: 1px solid white;
+    color:  rgba(78, 159, 215, 1) ;
 }
+
 
 
 
 
 /* ============== RESPONSIVE================= */
+@media (max-wi: 1200px){
+    .portfolio-item p {
+        display: none;
+      }
+}
+
 @media (max-width: 768px){
     body{
         padding: 30px;
@@ -684,11 +761,11 @@ h2{
     }
 
     .portfolio-txt p {
-        display: none; /* Ocultar la descripción completa en la vista de lista */
+        display: none;
     }
 
     .portfolio-txt h3{
-        font-size: 25px; /* Reducir el tamaño del título */
+        font-size: 25px; 
     }
 
     .close{
@@ -701,7 +778,7 @@ h2{
         transition: background-color 0.3s ease;
         position: absolute;
         top: 5px;
-        left: 230px;
+        left: 330px;
         cursor: pointer;
     }
     
