@@ -1,77 +1,45 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
-import Logo from '../../assets/logo.png';
-import { Link, useLocation } from 'react-router-dom';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
-const Navbar = () => {
-  const location = useLocation();
-  const active = location.pathname;
+const Navbar = ({ activeSection }) => {
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <div className="w-full h-[8ch] bg-neutral-950 shadow-sm border-b border-neutral-900/50 lg:px-80 md:px-60 sm:px-7 px-4 flex justify-between items-center">
-      {/* Logo Section */}
-      <div className="flex items-center ml-4">
-        <img  src={Logo}  alt="Logo" 
-          className="logo w-16 h-auto" 
-        />
+    <nav style={{
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+      background: 'rgba(8, 12, 16, 0.88)', backdropFilter: 'blur(14px)',
+      borderBottom: '1px solid var(--border)',
+    }}>
+      <div style={{ maxWidth: '60rem', margin: '0 auto', padding: '0 1.5rem', height: '3.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <button onClick={() => scrollTo('hero')} style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)', letterSpacing: '0.04em', background: 'none', border: 'none', cursor: 'pointer' }}>
+          JOHAN<span style={{ color: 'var(--accent)' }}>.</span>
+        </button>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+          <div style={{ display: 'flex', gap: '1.75rem' }}>
+            {[['hero', 'Inicio'], ['proyectos', 'Proyectos'], ['sobre-mi', 'Sobre mi']].map(([id, label]) => (
+              <button key={id} onClick={() => scrollTo(id)} className={`nav-link ${activeSection === id ? 'active' : ''}`}>
+                {label}
+              </button>
+            ))}
+          </div>
+          <div style={{ display: 'flex', gap: '0.75rem', borderLeft: '1px solid var(--border)', paddingLeft: '1.5rem' }}>
+            <a href="https://github.com/XanthusCode" target="_blank" rel="noopener noreferrer"
+              style={{ color: 'var(--text-muted)', fontSize: '1rem', transition: 'color 0.22s' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
+            ><FaGithub /></a>
+            <a href="https://www.linkedin.com/in/johan-alexander-garcia/" target="_blank" rel="noopener noreferrer"
+              style={{ color: 'var(--text-muted)', fontSize: '1rem', transition: 'color 0.22s' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
+            ><FaLinkedin /></a>
+          </div>
+        </div>
       </div>
-
-
-      {/* Navigation Links */}
-      <div className="flex items-center gap-8">
-        <ul className="list-none md:text-base text-sm text-neutral-400 font-medium flex items-center md:gap-8 gap-4">
-          <li>
-            <Link
-              to={"/"}
-              className={`hover:text-neutral-500 ease-in-out duration-300 ${
-                active === '/' ? 'text-green-500' : 'text-neutral-400'
-              }`}
-            >
-              Inicio
-            </Link>
-          </li>
-          <li>
-            <Link
-              to={"/projects"}
-              className={`hover:text-neutral-500 ease-in-out duration-300 ${
-                active === '/projects' ? 'text-green-500' : 'text-neutral-400'
-              }`}
-            >
-              Proyectos
-            </Link>
-          </li>
-          <li>
-            <Link
-              to={"/me"}
-              className={`hover:text-neutral-500 ease-in-out duration-300 ${
-                active === '/me' ? 'text-green-500' : 'text-neutral-400'
-              }`}
-            >
-              Sobre mí
-            </Link>
-          </li>
-        </ul>
-
-        {/* GitHub Icon */}
-        <Link
-          to={"https://github.com/XanthusCode"} 
-          className="w-8 h-8 rounded-full bg-neutral-900 hover:bg-neutral-900/40 flex items-center justify-center text-neutral-400 text-lg hover:text-neutral-500 ease-in-out duration-300"
-        >
-          <FaGithub />
-        </Link>
-
-        {/* LinkedIn Icon */}
-        <Link
-          to={"https://www.linkedin.com/in/johan-alexander-garcia/"} 
-          className="w-8 h-8 rounded-full bg-neutral-900 hover:bg-neutral-900/40 flex items-center justify-center text-neutral-400 text-lg hover:text-neutral-500 ease-in-out duration-300"
-        >
-          <FaLinkedin />
-        </Link>
-      </div>
-    </div>
+    </nav>
   );
 };
 
 export default Navbar;
-

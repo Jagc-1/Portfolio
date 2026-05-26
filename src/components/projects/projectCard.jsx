@@ -1,40 +1,34 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { FaGithub } from 'react-icons/fa';
+import { GoArrowUpRight } from 'react-icons/go';
 
-const ProjectCard = ({ img, title, desc, link, date, showLink = true }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const ProjectCard = ({ img, title, desc, link, date }) => {
+  const [open, setOpen] = useState(false);
 
   return (
-    <div 
-      className={`relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-in-out 
-        ${isExpanded ? 'h-auto' : 'h-60'} cursor-pointer group transform hover:scale-105`} 
-      onClick={() => setIsExpanded(!isExpanded)}
-    >
-      {/* Imagen del Proyecto */}
-      <img
-        src={img}
-        alt={title}
-        className="w-full h-40 object-cover transition-transform duration-300 ease-in-out"
-      />
+    <div className="project-card" onClick={() => setOpen(!open)}>
+      <div style={{ position: 'relative', overflow: 'hidden', height: '10rem' }}>
+        <img src={img} alt={title}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease', display: 'block', transform: open ? 'scale(1.04)' : 'scale(1)' }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 30%, rgba(8,12,16,0.97))' }} />
+        <div style={{ position: 'absolute', bottom: '0.75rem', left: '1rem', right: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+          <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)' }}>{title}</h3>
+          {date && <span className="mono" style={{ fontSize: '0.58rem', color: 'var(--text-muted)', letterSpacing: '0.08em' }}>{date}</span>}
+        </div>
+      </div>
 
-      {/* Contenido del Proyecto */}
-      <div className={`p-4 bg-gray-800 text-gray-100 transition-all duration-300 ease-in-out 
-        ${isExpanded ? 'max-h-screen' : 'max-h-24 overflow-hidden'} rounded-b-lg`}>
-        
-        <h2 className="text-2xl font-bold mb-1">{title}</h2>
-
-        {isExpanded && <p className="text-sm text-gray-400 mb-2">{date}</p>}
-        {isExpanded && <p className="text-sm">{desc}</p>}
-
-        {showLink && isExpanded && (
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-teal-400 hover:text-teal-600 text-base mt-2 inline-block transition duration-300 ease-in-out transform hover:scale-105"
-          >
-            View More
+      <div style={{
+        maxHeight: open ? '180px' : '0',
+        overflow: 'hidden',
+        transition: 'max-height 0.35s ease',
+        borderTop: open ? '1px solid var(--border)' : 'none',
+        padding: open ? '1rem' : '0 1rem',
+      }}>
+        {desc && <p className="mono" style={{ fontSize: '0.73rem', color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '0.75rem' }}>{desc}</p>}
+        {link && (
+          <a href={link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="btn-primary" style={{ fontSize: '0.62rem', padding: '0.35rem 0.8rem' }}>
+            <FaGithub /> Codigo <GoArrowUpRight />
           </a>
         )}
       </div>

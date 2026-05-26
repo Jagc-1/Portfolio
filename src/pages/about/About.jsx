@@ -1,148 +1,190 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
 import Layout from '../../components/layout/Layout';
-import AboutImg from '../../assets/Profile.png';
-import { Link } from 'react-scroll'; 
-import { FaArrowRightLong } from 'react-icons/fa6';
-import { LiaHandPointer } from 'react-icons/lia';
-import JohanCard from '../../components/johan/JohanCard';
-import { FaHtml5, FaCss3Alt, FaJsSquare, FaJava, FaPython,FaReact } from 'react-icons/fa'; // Importar íconos
-import { SiSpringboot, SiMysql, SiPostgresql,SiBootstrap } from 'react-icons/si'; // Importar íconos
+import AboutImg from '../../assets/profile.png';
+import { GoArrowUpRight } from 'react-icons/go';
+import {
+  FaHtml5, FaCss3Alt, FaJsSquare, FaJava, FaPython, FaReact, FaEnvelope, FaInstagram
+} from 'react-icons/fa';
+import { SiSpringboot, SiMysql, SiPostgresql, SiBootstrap } from 'react-icons/si';
 
-const About = () => {
-  return (
-    <Layout className="md:py-[7ch] py-6 space-y-16">
+const SKILLS = [
+  { Icon: FaReact, label: 'React', color: '#61dafb' },
+  { Icon: FaHtml5, label: 'HTML5', color: '#e34f26' },
+  { Icon: FaCss3Alt, label: 'CSS3', color: '#1572b6' },
+  { Icon: FaJsSquare, label: 'JavaScript', color: '#f7df1e' },
+  { Icon: FaJava, label: 'Java', color: '#f89820' },
+  { Icon: FaPython, label: 'Python', color: '#3776ab' },
+  { Icon: SiSpringboot, label: 'Spring Boot', color: '#6db33f' },
+  { Icon: SiMysql, label: 'MySQL', color: '#4479a1' },
+  { Icon: SiPostgresql, label: 'PostgreSQL', color: '#336791' },
+  { Icon: SiBootstrap, label: 'Bootstrap', color: '#7952b3' },
+];
 
-      {/* Intro Section */}
-      <div className="space-y-8">
-        <h1 className="text-4xl text-neutral-200 font-bold ">Sobre Mí</h1>
+const OBJETIVOS = [
+  'Desarrollar soluciones tecnologicas de alto impacto',
+  'Especializarme en tecnologias emergentes',
+  'Contribuir a la evolucion del sector tecnologico',
+  'Fomentar una cultura de aprendizaje continuo',
+];
+
+const VALORES = ['Integridad', 'Innovacion', 'Creatividad', 'Colaboracion', 'Adaptabilidad'];
+const COMPETENCIAS = ['Adaptacion al cambio', 'Innovacion', 'Creatividad', 'Habilidades Sociales', 'Trabajo en equipo', 'Responsabilidad'];
+
+const SectionBlock = ({ label, children }) => (
+  <div style={{ position: 'relative', paddingTop: '0.5rem' }}>
+    <div className="section-label" style={{ marginBottom: '1.5rem' }}>{label}</div>
+    {children}
+  </div>
+);
+
+const About = () => (
+  <div style={{ minHeight: 'calc(100vh - 3.5rem)' }}>
+    <Layout className="py-20 space-y-20">
+
+      {/* Profile */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '3rem', alignItems: 'start' }}>
+        <div style={{ position: 'relative', width: '160px', flexShrink: 0 }}>
+          <div style={{
+            position: 'absolute', top: '-6px', left: '-6px', width: '20px', height: '20px',
+            borderTop: '2px solid var(--accent)', borderLeft: '2px solid var(--accent)'
+          }} />
+          <div style={{
+            position: 'absolute', bottom: '-6px', right: '-6px', width: '20px', height: '20px',
+            borderBottom: '2px solid var(--accent2)', borderRight: '2px solid var(--accent2)'
+          }} />
+          <img
+            src={AboutImg}
+            alt="Johan Campos"
+            style={{ width: '100%', aspectRatio: '1', objectFit: 'cover', borderRadius: '4px', border: '1px solid var(--border)', filter: 'grayscale(15%)' }}
+          />
+        </div>
 
         <div className="space-y-5">
-          {/* Profile Section and Bio Section */}
-          <div className="w-full flex items-center gap-14 flex-wrap">
-            <div className="md:w-64 w-full h-auto flex items-center border border-neutral-900/40 bg-neutral-900/20 rounded-lg">
-              <img src={AboutImg} alt="About Image" className="w-full aspect-square rounded-xl object-cover object-center " />
-            </div>
-            <div className="flex-1 space-y-5">
-              <p className="text-lg text-neutral-500 font-normal">
-                Busco constantemente nuevos retos que impulsen mi crecimiento profesional. Me dedico a aplicar 
-                mis habilidades en proyectos colaborativos que generen soluciones efectivas y de impacto positivo. 
-                Mi objetivo es contribuir a iniciativas que no solo alcancen sus metas, sino que también mejoren la vida
-                de las personas.
-              </p>
-            </div>
+          <div>
+            <h1 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: '2rem', color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
+              Johan Alexander<br />Garcia Campos
+            </h1>
+            <div className="section-label" style={{ marginTop: '0.5rem' }}>Full Stack Developer</div>
           </div>
 
-          {/* Hire Section */}
-          <div className="w-full flex items-center justify-between bg-green-900/5 border border-green-900/60 hover:border-green-900/80 md:px-6 px-3 py-3 rounded-lg group cursor-pointer">
-              <p className="md:text-lg text-sm text-neutral-400 font-normal">
-                ¿Interesado en colaborar? ¡Contáctame!
-              </p>
-              <Link to='contact' smooth={true} duration={200} className="flex items-center gap-x-2 md:text-lg text-base text-neutral-500 hover:text-green-600 font-normal ease-in-out duration-300">
-              Hire Me 
-              <FaArrowRightLong className="text-xl hover:translate-x-1 ease-in-out duration-500" />
-            </Link>
+          <p className="mono" style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 2 }}>
+            Busco constantemente nuevos retos que impulsen mi crecimiento profesional.
+            Me dedico a aplicar mis habilidades en proyectos colaborativos que generen
+            soluciones efectivas y de impacto positivo.
+          </p>
 
-
-          </div>
+          <a
+            href="mailto:garciacamposjohan18@gmail.com"
+            className="btn-primary"
+            style={{ width: 'fit-content' }}
+          >
+            Contactar <GoArrowUpRight />
+          </a>
         </div>
-
-      {/* Bio Section */}
-      <div className="space-y-5">
-      <h1 className="text-2xl text-neutral-200 font-bold">Objetivos Profesionales</h1>
-        <ul className="list-disc list-inside space-y-2 text-lg text-neutral-500">
-          <li className="font-semibold">Desarrollar soluciones tecnológicas de alto impacto</li>
-          <li className="font-semibold">Especializarme en tecnologías emergentes</li>
-          <li className="font-semibold">Contribuir a la evolución del sector tecnológico</li>
-          <li className="font-semibold">Fomentar una cultura de aprendizaje y mejora continua</li>
-        </ul>
-
-        <h1 className="text-2xl text-neutral-200 font-bold">Visión</h1>
-        <p className="text-lg text-neutral-500 font-normal">
-            Transformo conceptos abstractos en soluciones tecnológicas elegantes y efectivas,
-             construyendo sistemas robustos y escalables con un enfoque en arquitectura sólida y código limpio. 
-             Busco innovar y optimizar en cada proyecto, explorando nuevas tecnologías y colaborando para generar 
-             un impacto real.
-        </p>
-
-        <h1 className="text-2xl text-neutral-200 font-bold">Misión</h1>
-        <p className="text-lg text-neutral-500 font-normal">
-        Mi misión es crear software que no solo cumple con los estándares técnicos, sino que redefine la 
-        forma en que interactuamos con la tecnología. Enfocado en una arquitectura ágil y una calidad excepcional,
-         desarrollo soluciones que son resilientes y adaptativas, diseñadas para anticipar y superar futuros 
-        desafíos mientras generan un impacto significativo y transformador.
-        </p>
-
-        <h1 className="text-2xl text-neutral-200 font-bold">Valores</h1>
-        <ul className="list-disc list-inside space-y-2 text-lg text-neutral-500">
-          <li className="flex flex-wrap justify-center gap-6">
-              <a className="text-lg font-semibold text-neutral-300 hover:text-green-400 transition ease-in-out duration-300 transform hover:scale-105">Integridad</a>
-              <a className="text-lg font-semibold text-neutral-300 hover:text-green-400 transition ease-in-out duration-300 transform hover:scale-105">Innovación</a>
-              <a className="text-lg font-semibold text-neutral-300 hover:text-green-400 transition ease-in-out duration-300 transform hover:scale-105">Creatividad</a>
-              <a className="text-lg font-semibold text-neutral-300 hover:text-green-400 transition ease-in-out duration-300 transform hover:scale-105">Colaboración</a>
-              <a className="text-lg font-semibold text-neutral-300 hover:text-green-400 transition ease-in-out duration-300 transform hover:scale-105">Trabajo en equipo</a>
-              <a className="text-lg font-semibold text-neutral-300 hover:text-green-400 transition ease-in-out duration-300 transform hover:scale-105">Adaptabilidad</a>
-          </li>
-        </ul>
       </div>
 
+      <div className="divider" />
 
-        {/* Contact Section */}
-        <div id='contact'  className="space-y-4">
-          <h1  className="text-3xl text-neutral-200 font-bold">Contactame</h1>
-          <div className="space-y-3">
-            <div className="flex items-center gap-x-3">
-              <LiaHandPointer className="text-lg text-green-400 font-normal rotate-90" />
-              <p className="md:block hidden text-base text-neutral-400 font-normal">Email:</p>
-              <Link to={'mailto:garciacamposjohan18@gmail.com'} className="text-base text-neutral-400 hover:text-green-500 font-normal ease-in-out duration-300">garciacamposjohan18@gmail.com</Link>
+      {/* Vision / Mision */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+        <SectionBlock label="Vision">
+          <p className="mono" style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', lineHeight: 2 }}>
+            Transformo conceptos abstractos en soluciones tecnologicas elegantes y efectivas,
+            construyendo sistemas robustos y escalables con enfoque en arquitectura solida y
+            codigo limpio.
+          </p>
+        </SectionBlock>
+        <SectionBlock label="Mision">
+          <p className="mono" style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', lineHeight: 2 }}>
+            Crear software que redefine la forma en que interactuamos con la tecnologia,
+            enfocado en una arquitectura agil y calidad excepcional para anticipar futuros
+            desafios.
+          </p>
+        </SectionBlock>
+      </div>
+
+      <div className="divider" />
+
+      {/* Objetivos */}
+      <SectionBlock label="Objetivos Profesionales">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+          {OBJETIVOS.map((o, i) => (
+            <div key={i} style={{
+              display: 'flex', alignItems: 'flex-start', gap: '0.75rem',
+              padding: '0.75rem 1rem',
+              background: 'var(--surface)',
+              border: '1px solid var(--border)',
+              borderRadius: '4px'
+            }}>
+              <span className="mono" style={{ color: 'var(--accent)', fontSize: '0.6rem', marginTop: '0.2rem', flexShrink: 0 }}>
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span className="mono" style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>{o}</span>
             </div>
+          ))}
+        </div>
+      </SectionBlock>
 
-            <div className="flex items-center gap-x-3">
-              <LiaHandPointer className="text-lg text-green-400 font-normal rotate-90" />
-              <p className="md:block hidden text-base text-neutral-400 font-normal">Instagram:</p>
-              <Link to={'https://www.instagram.com/xanthus_24/'} className="text-base text-neutral-400 hover:text-green-500 font-normal ease-in-out duration-300">xanthus_24</Link>
+      <div className="divider" />
+
+      {/* Skills */}
+      <SectionBlock label="Stack Tecnologico">
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+          {SKILLS.map(({ Icon, label, color }) => (
+            <div key={label} className="skill-pill"
+              onMouseEnter={e => {
+                const icon = e.currentTarget.querySelector('svg');
+                if (icon) icon.style.color = color;
+              }}
+              onMouseLeave={e => {
+                const icon = e.currentTarget.querySelector('svg');
+                if (icon) icon.style.color = '';
+              }}
+            >
+              <Icon style={{ fontSize: '0.95rem', transition: 'color 0.25s' }} />
+              <span>{label}</span>
             </div>
+          ))}
+        </div>
+      </SectionBlock>
+
+      <div className="divider" />
+
+      {/* Valores + Competencias */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+        <SectionBlock label="Valores">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {VALORES.map(v => (
+              <span key={v} className="tag tag-accent">{v}</span>
+            ))}
           </div>
-        </div>
+        </SectionBlock>
+        <SectionBlock label="Competencias">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {COMPETENCIAS.map(c => (
+              <span key={c} className="tag">{c}</span>
+            ))}
+          </div>
+        </SectionBlock>
       </div>
 
-      {/* Skills Section */}
-      <div className="w-full space-y-8">
-      <h1 className="text-3xl text-neutral-200 font-bold"> Skills  </h1>
-      <div className="flex items-center gap-6 flex-wrap">
-          <JohanCard Icon={FaReact} className={`group-hover:text-blue-700 `} />
-          <JohanCard Icon={FaHtml5} className={`group-hover:text-red-700 `} /> {/* HTML */}
-          <JohanCard Icon={FaCss3Alt} className={`group-hover:text-blue-700 `} /> {/* CSS */}
-          <JohanCard Icon={FaJsSquare} className={`group-hover:text-yellow-700 `} /> {/* JavaScript */}
-          <JohanCard Icon={FaJava} className={`group-hover:text-red-700 `}/> {/* Java */}
-          <JohanCard Icon={FaPython} className={`group-hover:text-teal-700 `} /> {/* Python */}
-          <JohanCard Icon={SiSpringboot} className={`group-hover:text-green-700 `}  /> {/* Spring Boot */}
-          <JohanCard Icon={SiMysql} className={`group-hover:text-blue-400 `} /> {/* MySQL */}
-          <JohanCard Icon={SiPostgresql} className={`group-hover:text-blue-900 `} /> {/* PostgreSQL */}
-          <JohanCard Icon={SiBootstrap} className={`group-hover:text-purple-900 `} /> {/* Bootstrap */}
-        </div>
-      </div>
+      <div className="divider" />
 
-      {/* Competencias Section */}
-      <div className="p-8 bg-neutral-900 rounded-lg shadow-lg cursor-pointer">
-        <div className="text-center">
-            <h1 className="text-3xl font-extrabold text-neutral-100 mb-8">Competencias</h1>
-            <ul className="flex flex-wrap justify-center gap-6">
-                <li className="flex flex-wrap justify-center gap-6">
-                    <a className="text-lg font-semibold text-neutral-300 hover:text-green-400 transition ease-in-out duration-300 transform hover:scale-105">Adaptación al cambio</a>
-                    <a className="text-lg font-semibold text-neutral-300 hover:text-green-400 transition ease-in-out duration-300 transform hover:scale-105">Innovación</a>
-                    <a className="text-lg font-semibold text-neutral-300 hover:text-green-400 transition ease-in-out duration-300 transform hover:scale-105">Creatividad</a>
-                    <a className="text-lg font-semibold text-neutral-300 hover:text-green-400 transition ease-in-out duration-300 transform hover:scale-105">Habilidades Sociales</a>
-                    <a className="text-lg font-semibold text-neutral-300 hover:text-green-400 transition ease-in-out duration-300 transform hover:scale-105">Trabajo en equipo</a>
-                    <a className="text-lg font-semibold text-neutral-300 hover:text-green-400 transition ease-in-out duration-300 transform hover:scale-105">Responsabilidad</a>
-                </li>
-            </ul>
+      {/* Contacto */}
+      <SectionBlock label="Contacto">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <a href="mailto:garciacamposjohan18@gmail.com" className="contact-link">
+            <FaEnvelope style={{ fontSize: '0.85rem', color: 'var(--accent)' }} />
+            garciacamposjohan18@gmail.com
+          </a>
+          <a href="https://www.instagram.com/xanthus_24/" target="_blank" rel="noopener noreferrer" className="contact-link">
+            <FaInstagram style={{ fontSize: '0.85rem', color: 'var(--accent2)' }} />
+            @xanthus_24
+          </a>
         </div>
-      </div>
-
+      </SectionBlock>
 
     </Layout>
-  );
-}
+  </div>
+);
 
 export default About;
