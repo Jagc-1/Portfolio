@@ -1,5 +1,3 @@
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
-
 const Navbar = ({ activeSection }) => {
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -13,7 +11,7 @@ const Navbar = ({ activeSection }) => {
     }}>
       <div style={{ maxWidth: '60rem', margin: '0 auto', padding: '0 1.5rem', height: '3.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <button onClick={() => scrollTo('hero')} style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)', letterSpacing: '0.04em', background: 'none', border: 'none', cursor: 'pointer' }}>
-          JOHAN<span style={{ color: 'var(--accent)' }}>.</span>
+          JOHAN<span style={{ color: 'var(--accent)' }}>.DEV</span>
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
@@ -23,18 +21,6 @@ const Navbar = ({ activeSection }) => {
                 {label}
               </button>
             ))}
-          </div>
-          <div style={{ display: 'flex', gap: '0.75rem', borderLeft: '1px solid var(--border)', paddingLeft: '1.5rem' }}>
-            <a href="https://github.com/XanthusCode" target="_blank" rel="noopener noreferrer"
-              style={{ color: 'var(--text-muted)', fontSize: '1rem', transition: 'color 0.22s' }}
-              onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
-              onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
-            ><FaGithub /></a>
-            <a href="https://www.linkedin.com/in/johan-alexander-garcia/" target="_blank" rel="noopener noreferrer"
-              style={{ color: 'var(--text-muted)', fontSize: '1rem', transition: 'color 0.22s' }}
-              onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-              onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
-            ><FaLinkedin /></a>
           </div>
         </div>
       </div>
