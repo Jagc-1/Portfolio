@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { FaGithub } from 'react-icons/fa';
 import { GoArrowUpRight, GoArrowLeft } from 'react-icons/go';
 import { PROJECTS } from '../data/projects';
+import { SOCIAL } from '../data/config';
 
-const W = { maxWidth: '60rem', margin: '0 auto', padding: '0 1.5rem' };
+const W = { maxWidth: '90rem', margin: '0 auto', padding: '0 1.5rem' };
 
 // ── Drawer que sube desde abajo ─────────────────────────────────────────────
 const ProjectDrawer = ({ project, onClose }) => {
   const [visible, setVisible] = useState(false);
 
-  // entrada: espera un frame para disparar la transicion
   useEffect(() => {
     const t = requestAnimationFrame(() => setVisible(true));
     return () => cancelAnimationFrame(t);
@@ -17,14 +18,21 @@ const ProjectDrawer = ({ project, onClose }) => {
 
   const handleClose = () => {
     setVisible(false);
-    setTimeout(onClose, 380); // espera que termine la animacion antes de desmontar
+    setTimeout(onClose, 380);
   };
+
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') handleClose(); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, []);
 
   return (
     <>
       {/* overlay oscuro */}
       <div
         onClick={handleClose}
+        aria-hidden="true"
         style={{
           position: 'fixed', inset: 0, zIndex: 200,
           background: 'rgba(8,12,16,0.7)', backdropFilter: 'blur(4px)',
@@ -35,6 +43,9 @@ const ProjectDrawer = ({ project, onClose }) => {
 
       {/* panel */}
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={project.title}
         style={{
           position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 201,
           maxHeight: '90vh',
@@ -111,7 +122,7 @@ const ProjectDrawer = ({ project, onClose }) => {
           {/* imagen */}
           <div style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border)', background: 'var(--surface2)' }}>
             {project.img ? (
-              <img src={project.img} alt={project.title} style={{ width: '100%', display: 'block', maxHeight: '480px', objectFit: 'cover' }} />
+              <img src={project.img} alt={project.title} style={{ width: '100%', display: 'block', maxHeight: '520px', objectFit: 'contain', background: 'var(--surface2)' }} />
             ) : (
               <div style={{ width: '100%', aspectRatio: '16/9', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1rem', backgroundImage: 'linear-gradient(rgba(99,179,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(99,179,255,0.03) 1px, transparent 1px)', backgroundSize: '24px 24px', background: 'var(--surface)' }}>
                 <FaGithub style={{ fontSize: '3rem', color: 'var(--text-muted)' }} />
@@ -166,6 +177,34 @@ const ProjectCard = ({ project, onClick }) => {
 };
 
 // ── Seccion principal ───────────────────────────────────────────────────────
+ProjectDrawer.propTypes = {
+  project: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    desc: PropTypes.string.isRequired,
+    shortDesc: PropTypes.string,
+    link: PropTypes.string.isRequired,
+    img: PropTypes.string,
+    stack: PropTypes.arrayOf(PropTypes.shape({
+      Icon: PropTypes.elementType.isRequired,
+      color: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })).isRequired,
+  }).isRequired,
+  onClose: PropTypes.func.isRequired,
+};
+
+ProjectCard.propTypes = {
+  project: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    desc: PropTypes.string.isRequired,
+    shortDesc: PropTypes.string,
+    img: PropTypes.string,
+  }).isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+
 const Projects = () => {
   const [selected, setSelected] = useState(null);
 
@@ -186,7 +225,7 @@ const Projects = () => {
             </h2>
           </div>
           <a
-            href="https://github.com/XanthusCode" target="_blank" rel="noopener noreferrer"
+            href={SOCIAL.github} target="_blank" rel="noopener noreferrer"
             style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontFamily: 'DM Mono, monospace', fontSize: '0.68rem', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', transition: 'color 0.22s' }}
             onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
             onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
@@ -197,7 +236,7 @@ const Projects = () => {
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
           {PROJECTS.map(p => (
-            <ProjectCard key={p.title} project={p} onClick={() => setSelected(p)} />
+            <ProjectCard key={p.id} project={p} onClick={() => setSelected(p)} />
           ))}
         </div>
       </div>

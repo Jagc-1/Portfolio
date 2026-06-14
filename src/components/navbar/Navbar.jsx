@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Navbar = ({ activeSection }) => {
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -9,7 +11,7 @@ const Navbar = ({ activeSection }) => {
       background: 'rgba(8, 12, 16, 0.88)', backdropFilter: 'blur(14px)',
       borderBottom: '1px solid var(--border)',
     }}>
-      <div style={{ maxWidth: '60rem', margin: '0 auto', padding: '0 1.5rem', height: '3.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div style={{ maxWidth: '90rem', margin: '0 auto', padding: '0 1.5rem', height: '3.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <button onClick={() => scrollTo('hero')} style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)', letterSpacing: '0.04em', background: 'none', border: 'none', cursor: 'pointer' }}>
           JOHAN<span style={{ color: 'var(--accent)' }}>.DEV</span>
         </button>
@@ -29,3 +31,11 @@ const Navbar = ({ activeSection }) => {
 };
 
 export default Navbar;
+
+Navbar.propTypes = {
+  activeSection: PropTypes.string,
+};
+
+Navbar.defaultProps = {
+  activeSection: '',
+};

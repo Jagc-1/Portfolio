@@ -292,3 +292,30 @@ body::after {
   pointer-events: none;
   opacity: 0.08;
 }
+
+/* footer social links */
+.footer-social-link {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  transition: color 0.22s;
+  display: flex;
+  align-items: center;
+}
+.footer-social-link:hover,
+.footer-social-link:focus-visible {
+  color: var(--text-primary);
+  outline: none;
+}
+.footer-social-link--linkedin:hover,
+.footer-social-link--linkedin:focus-visible {
+  color: var(--accent);
+}
+
+/* respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

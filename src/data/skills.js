@@ -13,6 +13,6 @@ export const SKILLS = [
   { Icon: SiMysql,      label: 'MySQL',        color: '#4479a1' },
   //{ Icon: SiPostgresql, label: 'PostgreSQL',   color: '#336791' },
   { Icon: SiBootstrap,  label: 'Bootstrap',    color: '#7952b3' },
-  { Icon: TbBrandCSharp,  label: 'charp',    color: '#63468f' },
+  { Icon: TbBrandCSharp,  label: 'C#',    color: '#63468f' },
   { Icon: FaVuejs,  label: 'Vue',    color: '#1eee63' },
 ];

@@ -1,44 +1,19 @@
-import { FaJsSquare, FaJava, FaReact } from 'react-icons/fa';
-import { SiSpringboot, SiMysql, SiPostgresql } from 'react-icons/si';
-import ImgProject2 from '../assets/pr2.png';
+import { FaJsSquare, FaJava, FaReact, FaVuejs, FaHtml5, FaCss3Alt } from 'react-icons/fa';
+import { SiSpringboot, SiMysql, SiPostgresql, SiDotnet } from 'react-icons/si';
+import { TbBrain } from 'react-icons/tb';
+import ImgProject1 from '../assets/pr1.png';
 import ImgProject3 from '../assets/pr3.png';
-import ImgProject5 from '../assets/airport.png';
+import ImgProject4 from '../assets/pr4.png';
 import ImgProject6 from '../assets/Todo.png';
 
 export const PROJECTS = [
   {
-    img: null,
-    title: 'Ecommerce Backend',
-    shortDesc: 'API REST con autenticacion, productos y pedidos.',
-    date: 'Oct 2024',
-    desc: 'API REST completa para gestion de ecommerce. Autenticacion y autorizacion con Spring Security, gestion de productos, usuarios y pedidos. Arquitectura en capas con Spring Data JPA y base de datos relacional.',
-    link: 'https://github.com/XanthusCode/ecommerce-Backend',
-    stack: [
-      { Icon: SiSpringboot, color: '#6db33f', label: 'Spring Boot' },
-      { Icon: FaJava,       color: '#f89820', label: 'Java' },
-      { Icon: SiMysql,      color: '#4479a1', label: 'MySQL' },
-      { Icon: SiPostgresql, color: '#336791', label: 'PostgreSQL' },
-    ],
-  },
-  {
-    img: null,
-    title: 'Backend Antiguedades',
-    shortDesc: 'Backend con Spring Security para gestion de inventario.',
-    date: 'Sep 2024',
-    desc: 'Backend robusto para gestion de negocio de antiguedades. Spring Boot con Spring Security para autenticacion de usuarios, Spring Data JPA para persistencia y MySQL como base de datos.',
-    link: 'https://github.com/XanthusCode/Backend-Antiguedades',
-    stack: [
-      { Icon: SiSpringboot, color: '#6db33f', label: 'Spring Boot' },
-      { Icon: FaJava,       color: '#f89820', label: 'Java' },
-      { Icon: SiMysql,      color: '#4479a1', label: 'MySQL' },
-    ],
-  },
-  {
+    id: 'movie-search',
     img: ImgProject3,
     title: 'Movie Search',
-    shortDesc: 'Buscador de peliculas con API externa y modal de detalles.',
-    date: 'Ago 2024',
-    desc: 'Aplicacion React para buscar y explorar peliculas consumiendo una API externa. Busqueda en tiempo real con debounce, vista de detalles en modal y diseno responsivo.',
+    shortDesc: 'SPA with real-time search, debouncing and external API integration.',
+    date: 'Aug 2024',
+    desc: 'React single-page application for browsing and discovering movies. Debounced real-time search to reduce unnecessary API calls, detail view in a modal overlay, and a clean responsive layout. Demonstrates practical use of custom hooks and async data fetching patterns.',
     link: 'https://github.com/XanthusCode/movie-search',
     stack: [
       { Icon: FaReact,    color: '#61dafb', label: 'React' },
@@ -46,11 +21,12 @@ export const PROJECTS = [
     ],
   },
   {
-    img: ImgProject2,
-    title: 'Tienda - Carrito',
-    shortDesc: 'Carrito de compras en React con notificaciones en tiempo real.',
-    date: 'Ago 2024',
-    desc: 'Tienda con carrito de compras construida en React. Agregar y eliminar productos con confirmacion, notificaciones visuales al interactuar y manejo de estado con hooks.',
+    id: 'tienda-carrito',
+    img: null,
+    title: 'Shopping Cart',
+    shortDesc: 'React storefront with real-time cart state and visual notifications.',
+    date: 'Aug 2024',
+    desc: 'E-commerce storefront built with React featuring a fully functional shopping cart. Add and remove products with visual confirmation feedback, real-time cart count updates, and state management using hooks without external libraries.',
     link: 'https://github.com/XanthusCode/tienda',
     stack: [
       { Icon: FaReact,    color: '#61dafb', label: 'React' },
@@ -58,26 +34,82 @@ export const PROJECTS = [
     ],
   },
   {
-    img: ImgProject5,
-    title: 'Sistema de Vuelos',
-    shortDesc: 'Gestion de vuelos, pasajeros y aeropuertos con Java.',
+    id: 'betplay',
+    img: null,
+    title: 'BetPlay Platform',
+    shortDesc: 'Sports betting platform with match management, odds and bet history.',
     date: 'Jun 2024',
-    desc: 'Sistema de gestion de vuelos con logica de dominio completa. Manejo de reservas, pasajeros, rutas y aeropuertos. Desarrollado en Java con MySQL como base de datos relacional.',
-    link: 'https://github.com/XanthusCode/airport',
+    desc: 'Full-featured sports betting platform built with Java and Spring Boot. Handles user registration and authentication, match and event management, dynamic odds, bet placement and validation, and full betting history per user. Demonstrates complex domain modeling and business rule enforcement in a layered Spring architecture.',
+    link: 'https://github.com/XanthusCode/betPlay2.0',
     stack: [
-      { Icon: FaJava,  color: '#f89820', label: 'Java' },
-      { Icon: SiMysql, color: '#4479a1', label: 'MySQL' },
+      { Icon: SiSpringboot, color: '#6db33f', label: 'Spring Boot' },
+      { Icon: FaJava,       color: '#f89820', label: 'Java' },
+      { Icon: SiMysql,      color: '#4479a1', label: 'MySQL' },
     ],
   },
   {
+    id: 'todo-app',
     img: ImgProject6,
     title: 'TodoApp',
-    shortDesc: 'Gestor de tareas CRUD completo con React.',
+    shortDesc: 'Full CRUD task manager with clean minimal interface in React.',
     date: 'Sep 2024',
-    desc: 'Aplicacion de gestion de tareas construida con React. CRUD completo con estado local, marcar tareas completadas y eliminarlas. Interfaz limpia y minimalista.',
+    desc: 'Task management app built with React. Complete CRUD operations using local state, mark tasks as completed, delete and filter tasks. Focused on clean component structure and minimal UI — a baseline for demonstrating React fundamentals.',
     link: 'https://github.com/XanthusCode/TodoApp',
     stack: [
       { Icon: FaReact, color: '#61dafb', label: 'React' },
+    ],
+  },
+  {
+    id: 'finanzas-app',
+    img: null,
+    title: 'Personal Finance App',
+    shortDesc: 'Full-stack finance tracker with budgets, goals and recurring transactions.',
+    date: '2026',
+    desc: 'Full-stack personal finance manager. Organize income and expenses by category, define budgets and savings goals, and mark transactions as recurring so they carry over automatically to the next month. Dashboard shows cumulative savings across all months at a glance. Built with Vue on the frontend, .NET on the backend, and PostgreSQL as the relational database.',
+    link: 'https://github.com/XanthusCode/Finanzas_App',
+    stack: [
+      { Icon: FaVuejs,      color: '#42b883', label: 'Vue' },
+      { Icon: SiDotnet,     color: '#512bd4', label: '.NET' },
+      { Icon: SiPostgresql, color: '#336791', label: 'PostgreSQL' },
+    ],
+  },
+  {
+    id: 'foods-website',
+    img: ImgProject1,
+    title: 'Foods Website',
+    shortDesc: 'Responsive food restaurant landing page with menu and contact sections.',
+    date: '2024',
+    desc: 'Full responsive landing page for a food restaurant. Includes hero section, navigation, menu showcase, services and contact. Built with semantic HTML and CSS — focused on clean layout, visual hierarchy and responsive design across screen sizes.',
+    link: 'https://github.com/XanthusCode/Foods',
+    stack: [
+      { Icon: FaHtml5,   color: '#e34f26', label: 'HTML5' },
+      { Icon: FaCss3Alt, color: '#1572b6', label: 'CSS3' },
+    ],
+  },
+  {
+    id: 'memories-game',
+    img: ImgProject4,
+    title: 'Memory Game',
+    shortDesc: 'Browser memory card game with timer, hit counter and move tracking.',
+    date: '2024',
+    desc: 'Classic memory card game built with vanilla JavaScript. Players flip cards to find matching pairs under a 30-second countdown. Tracks hits, total moves, and elapsed time to score the session. Demonstrates DOM manipulation, game state management and timer logic without any framework.',
+    link: 'https://github.com/XanthusCode/MemoriesGame',
+    stack: [
+      { Icon: FaJsSquare, color: '#f7df1e', label: 'JavaScript' },
+      { Icon: FaHtml5,    color: '#e34f26', label: 'HTML5' },
+    ],
+  },
+  {
+    id: 'code-review-ai',
+    img: null,
+    title: 'Code Review AI',
+    shortDesc: 'AI-powered code analyzer for security, performance and best practices.',
+    date: '2026',
+    desc: 'Tool that uses AI to perform targeted code reviews. Paste any code snippet and choose the analysis focus: security vulnerabilities, performance bottlenecks, readability issues, or best practices compliance. Each mode returns specific, actionable feedback powered by an AI model. Built with Vue on the frontend.',
+    link: 'https://github.com/XanthusCode/code-review-ai',
+    stack: [
+      { Icon: FaVuejs, color: '#42b883', label: 'Vue' },
+      { Icon: TbBrain, color: '#a78bfa', label: 'AI' },
     ],
   },
 ];

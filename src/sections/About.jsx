@@ -1,17 +1,18 @@
-import { FaEnvelope, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 import CodeBlock from '../components/CodeBlock/CodeBlock';
 
 const TRAYECTORIA = [
-  { year: '2024', label: 'Ecommerce & Antiguedades Backend', sub: 'Spring Boot + Security — Campuslands', color: 'var(--accent3)' },
-  { year: '2024', label: 'Sistema de Vuelos', sub: 'Java + MySQL — Campuslands', color: 'var(--accent)' },
-  { year: '2024', label: 'Spring Boot & REST APIs', sub: 'Backend con autenticacion — Campuslands', color: 'var(--accent)' },
-  { year: '2024', label: 'Full Stack con React', sub: 'Tienda, Movie Search, TodoApp', color: 'var(--accent2)' },
-  { year: '2023', label: 'Inicio en Campuslands', sub: 'HTML, CSS, JavaScript', color: 'var(--accent2)' },
+  { year: '2026', label: 'AI & Full Stack Vue', sub: 'Code Review AI · Personal Finance App — Vue, .NET, PostgreSQL', color: 'var(--accent2)' },
+  { year: '2024', label: 'Full Stack React', sub: 'Movie Search · Shopping Cart · TodoApp', color: 'var(--accent2)' },
+  { year: '2024', label: 'Java Backends & Spring Boot', sub: 'BetPlay · Ecommerce · Antiguedades — Spring Security, JPA', color: 'var(--accent3)' },
+  { year: '2024', label: 'Frontend & Games', sub: 'Foods Website · Memory Game — HTML, CSS, JavaScript', color: 'var(--accent)' },
+  { year: '2023', label: 'Inicio en Campuslands', sub: 'Fundamentos — HTML, CSS, JavaScript, Java', color: 'var(--accent)' },
 ];
 
 const About = ({ visibleLines, showCursor }) => (
   <section id="sobre-mi" style={{ padding: '6rem 0', borderTop: '1px solid var(--border)', background: 'linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%)' }}>
-    <div style={{ maxWidth: '60rem', margin: '0 auto', padding: '0 1.5rem' }}>
+    <div style={{ maxWidth: '90rem', margin: '0 auto', padding: '0 1.5rem' }}>
       <div className="section-label" style={{ marginBottom: '0.75rem' }}>Johan Campos</div>
       <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: '1.8rem', color: 'var(--text-primary)', letterSpacing: '-0.02em', marginBottom: '3.5rem' }}>
         Sobre mi
@@ -28,12 +29,6 @@ const About = ({ visibleLines, showCursor }) => (
             completas — desde APIs en Spring Boot hasta interfaces en React — con enfoque
             en arquitectura limpia, codigo mantenible y experiencias que funcionan.
           </p>
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-            {['Adaptacion al cambio', 'Trabajo en equipo', 'Responsabilidad', 'Innovacion', 'Creatividad'].map(c => (
-              <span key={c} className="tag">{c}</span>
-            ))}
-          </div>
         </div>
 
         {/* RIGHT */}
@@ -56,15 +51,6 @@ const About = ({ visibleLines, showCursor }) => (
           </div>
 
           <div>
-            <div className="section-label" style={{ marginBottom: '1rem' }}>Valores</div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-              {['Integridad', 'Innovacion', 'Creatividad', 'Colaboracion', 'Adaptabilidad'].map(v => (
-                <span key={v} className="tag tag-accent">{v}</span>
-              ))}
-            </div>
-          </div>
-
-          <div>
             <div className="section-label" style={{ marginBottom: '1rem' }}>Objetivos</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               {['Especializarme en tecnologias emergentes', 'Desarrollar soluciones de alto impacto'].map((o, i) => (
@@ -83,10 +69,6 @@ const About = ({ visibleLines, showCursor }) => (
                 <FaEnvelope style={{ color: 'var(--accent)', fontSize: '0.85rem', flexShrink: 0 }} />
                 garciacamposjohan18@gmail.com
               </a>
-              <a href="https://www.instagram.com/xanthus_24/" target="_blank" rel="noopener noreferrer" className="contact-link">
-                <FaInstagram style={{ color: 'var(--accent2)', fontSize: '0.85rem', flexShrink: 0 }} />
-                @xanthus_24
-              </a>
               <a href="https://www.linkedin.com/in/johan-alexander-garcia/" target="_blank" rel="noopener noreferrer" className="contact-link">
                 <FaLinkedin style={{ color: 'var(--accent)', fontSize: '0.85rem', flexShrink: 0 }} />
                 johan-alexander-garcia
@@ -98,5 +80,15 @@ const About = ({ visibleLines, showCursor }) => (
     </div>
   </section>
 );
+
+About.propTypes = {
+  visibleLines: PropTypes.number,
+  showCursor: PropTypes.bool,
+};
+
+About.defaultProps = {
+  visibleLines: undefined,
+  showCursor: false,
+};
 
 export default About;

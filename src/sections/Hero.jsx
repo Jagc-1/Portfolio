@@ -2,14 +2,14 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiOutlineDownload } from 'react-icons/hi';
 import { GoArrowUpRight } from 'react-icons/go';
 import { SKILLS } from '../data/skills';
-import profileImg from '../assets/about.png';
+import profileImg from '../assets/profile.png';
 
 const Hero = () => (
   <section id="hero" className="grid-bg" style={{ paddingTop: '8rem', paddingBottom: '6rem', position: 'relative', overflow: 'hidden' }}>
     <div className="hero-blob" style={{ width: '30rem', height: '30rem', background: 'var(--accent)', top: '-8rem', right: '-8rem' }} />
     <div className="hero-blob" style={{ width: '20rem', height: '20rem', background: 'var(--accent2)', bottom: '-4rem', left: '10%' }} />
 
-    <div style={{ maxWidth: '60rem', margin: '0 auto', padding: '0 1.5rem' }}>
+    <div style={{ maxWidth: '90rem', margin: '0 auto', padding: '0 1.5rem' }}>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '3rem', alignItems: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
           <div className="section-label">Full Stack Developer</div>
