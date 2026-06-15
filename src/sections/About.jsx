@@ -4,7 +4,7 @@ import CodeBlock from '../components/CodeBlock/CodeBlock';
 
 const TRAYECTORIA = [
   { year: '2026', label: 'AI & Full Stack Vue', sub: 'Code Review AI · Personal Finance App — Vue, .NET, PostgreSQL', color: 'var(--accent2)' },
-  { year: '2024', label: 'Full Stack React', sub: 'Movie Search · Shopping Cart · TodoApp', color: 'var(--accent2)' },
+  { year: '2024', label: 'Stack React', sub: 'TodoApp — React', color: 'var(--accent2)' },
   { year: '2024', label: 'Java Backends & Spring Boot', sub: 'BetPlay · Ecommerce · Antiguedades — Spring Security, JPA', color: 'var(--accent3)' },
   { year: '2024', label: 'Frontend & Games', sub: 'Foods Website · Memory Game — HTML, CSS, JavaScript', color: 'var(--accent)' },
   { year: '2023', label: 'Inicio en Campuslands', sub: 'Fundamentos — HTML, CSS, JavaScript, Java', color: 'var(--accent)' },

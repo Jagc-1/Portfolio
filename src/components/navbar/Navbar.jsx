@@ -11,11 +11,7 @@ const Navbar = ({ activeSection }) => {
       background: 'rgba(8, 12, 16, 0.88)', backdropFilter: 'blur(14px)',
       borderBottom: '1px solid var(--border)',
     }}>
-      <div style={{ maxWidth: '90rem', margin: '0 auto', padding: '0 1.5rem', height: '3.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <button onClick={() => scrollTo('hero')} style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)', letterSpacing: '0.04em', background: 'none', border: 'none', cursor: 'pointer' }}>
-          JOHAN<span style={{ color: 'var(--accent)' }}>.DEV</span>
-        </button>
-
+      <div style={{ maxWidth: '90rem', margin: '0 auto', padding: '0 1.5rem', height: '3.5rem', display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
           <div style={{ display: 'flex', gap: '1.75rem' }}>
             {[['hero', 'Inicio'], ['proyectos', 'Proyectos'], ['sobre-mi', 'Sobre mi']].map(([id, label]) => (

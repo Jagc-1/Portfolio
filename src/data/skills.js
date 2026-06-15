@@ -1,6 +1,6 @@
 import { FaHtml5, FaCss3Alt, FaJsSquare, FaJava, FaPython, FaReact, FaVuejs } from 'react-icons/fa';
 import { TbBrandCSharp } from "react-icons/tb";
-import { SiSpringboot, SiMysql, SiBootstrap } from 'react-icons/si';
+import { SiSpringboot, SiMysql, SiBootstrap, SiPostgresql } from 'react-icons/si';
 
 export const SKILLS = [
   { Icon: FaReact,      label: 'React',       color: '#61dafb' },
@@ -11,8 +11,8 @@ export const SKILLS = [
   { Icon: FaPython,     label: 'Python',       color: '#3776ab' },
   { Icon: SiSpringboot, label: 'Spring Boot',  color: '#6db33f' },
   { Icon: SiMysql,      label: 'MySQL',        color: '#4479a1' },
-  //{ Icon: SiPostgresql, label: 'PostgreSQL',   color: '#336791' },
+  { Icon: SiPostgresql, label: 'PostgreSQL',   color: '#336791' },
   { Icon: SiBootstrap,  label: 'Bootstrap',    color: '#7952b3' },
-  { Icon: TbBrandCSharp,  label: 'C#',    color: '#63468f' },
+  { Icon: TbBrandCSharp,  label: '.Net',    color: '#63468f' },
   { Icon: FaVuejs,  label: 'Vue',    color: '#1eee63' },
 ];

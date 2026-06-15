@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const TOKEN_COLOR = {
   keyword: 'var(--accent2)',
   string:  'var(--accent3)',
@@ -7,7 +9,7 @@ const TOKEN_COLOR = {
   plain:   'var(--text-secondary)',
 };
 
-const CODE_LINES = [
+export const CODE_LINES = [
   { tokens: [{ t: 'comment', v: '// Johan Alexander Garcia Campos' }] },
   { tokens: [] },
   { tokens: [{ t: 'keyword', v: 'const' }, { t: 'plain', v: ' ' }, { t: 'var', v: 'dev' }, { t: 'plain', v: ' = {' }] },
@@ -50,5 +52,16 @@ const CodeBlock = ({ visibleLines, showCursor }) => (
   </div>
 );
 
-export { CODE_LINES };
+CodeLine.propTypes = {
+  tokens: PropTypes.arrayOf(PropTypes.shape({
+    t: PropTypes.string.isRequired,
+    v: PropTypes.string.isRequired,
+  })).isRequired,
+};
+
+CodeBlock.propTypes = {
+  visibleLines: PropTypes.number,
+  showCursor: PropTypes.bool,
+};
+
 export default CodeBlock;
